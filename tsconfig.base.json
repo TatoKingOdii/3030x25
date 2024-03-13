@@ -14,7 +14,18 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "~challenge/auth": ["libs/feature/auth/src/index.ts"],
+      "~challenge/cats": ["libs/cats/src/index.ts"],
+      "~challenge/error": ["libs/feature/error/src/index.ts"],
+      "~challenge/inactive": ["libs/shared/inactive/src/index.ts"],
+      "~challenge/location": ["libs/feature/location/src/index.ts"],
+      "~challenge/pnf": ["libs/shared/page-not-found/src/index.ts"],
+      "~challenge/quote": ["libs/feature/quote/src/index.ts"],
+      "~challenge/types": ["libs/shared/types/src/index.ts"],
+      "~challenge/unauth": ["libs/shared/unauthorized/src/index.ts"],
+      "~challenge/weather": ["libs/feature/weather/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

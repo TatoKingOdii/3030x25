@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
-import {IonApp, IonRouterOutlet} from "@ionic/angular/standalone";
+import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {IonApp, IonContent, IonFooter, IonHeader, IonRouterOutlet} from '@ionic/angular/standalone';
+import {addIcons} from "ionicons";
+import {addCircle, pencilOutline, trashOutline} from "ionicons/icons";
 
 @Component({
-  selector: 'c3030x25-root',
+  selector: 'app-root',
   standalone: true,
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
-  imports: [
-    IonApp,
-    IonRouterOutlet
-  ]
+  imports: [RouterOutlet, IonApp, IonRouterOutlet,
+    IonFooter, IonHeader, IonContent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  constructor() {}
+  title = '3030x24';
+
+  constructor() {
+    addIcons({addCircle, pencilOutline, trashOutline});
+  }
 }
