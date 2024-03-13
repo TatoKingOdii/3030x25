@@ -1,0 +1,61 @@
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      @if(weatherFacade.loadingWeather$ | async) {
+        <ion-spinner name="dots"></ion-spinner>
+      } @else {
+        <ion-col>
+          @for(weather of weatherFacade.weather$ | async; track weather) {
+            <ion-row>
+              <h2>{{weather.name}}</h2>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-card>
+                  <ion-card-header>
+                    <ion-card-title>
+                      Today's Weather {{getToday() | date}}
+                    </ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <ion-row>
+                      <ion-col>
+                        <p>{{weather.description}}</p>
+                        <p>{{weather.temperature}}</p>
+                        <p>{{weather.wind}}</p>
+                      </ion-col>
+                    </ion-row>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+              <ion-col>
+                <ion-card>
+                  <ion-card-header>
+                    <ion-card-title>
+                      Forecast
+                    </ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    @for(forecast of weather.forecast; track forecast.day) {
+                      <ion-col>
+                        <p>{{getTodayPlus(forecast.day) | date}}</p>
+                        <p>{{forecast.temperature}}</p>
+                        <p>{{forecast.wind}}</p>
+                      </ion-col>
+                    } @empty {
+                      <ion-col>
+                        <h2>No forecast data available</h2>
+                      </ion-col>
+                    }
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          } @empty {
+            No weather data available
+          }
+        </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
+</ion-content>
